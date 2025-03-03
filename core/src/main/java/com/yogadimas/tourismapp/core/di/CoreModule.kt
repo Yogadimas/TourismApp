@@ -37,7 +37,7 @@ val databaseModule = module {
 val networkModule = module {
     single {
         val hostname = BASE_URL_HOST
-        val certificatePinner = CertificatePinner.Builder()
+        val certificatePinning = CertificatePinner.Builder()
             .add(hostname, CERT_SHA_256_1)
             .add(hostname, CERT_SHA_256_2)
             .add(hostname, CERT_SHA_256_3)
@@ -46,7 +46,7 @@ val networkModule = module {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
-            .certificatePinner(certificatePinner)
+            .certificatePinner(certificatePinning)
             .build()
     }
     single {
