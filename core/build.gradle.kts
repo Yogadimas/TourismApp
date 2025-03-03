@@ -42,6 +42,9 @@ android {
 
 dependencies {
 
+    implementation(libs.android.database.sqlcipher)
+    implementation(libs.androidx.sqlite.ktx)
+
     debugImplementation(libs.leakcanary.android)
 
     api(libs.recyclerview)
