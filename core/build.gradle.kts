@@ -42,6 +42,8 @@ android {
 
 dependencies {
 
+    debugImplementation(libs.leakcanary.android)
+
     api(libs.recyclerview)
 
     api(libs.koin.android)

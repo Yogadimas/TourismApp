@@ -27,6 +27,7 @@ koin = "4.0.2"
 
 recyclerview = "1.4.0"
 
+leakcanaryAndroid = "2.14"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,6 +55,8 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
