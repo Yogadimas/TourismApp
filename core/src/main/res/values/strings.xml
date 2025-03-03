@@ -1,0 +1,12 @@
+<resources>
+    <string name="sample_title_item">Sample of title text</string>
+    <string name="sample_subtitle_item">Sample of subtitle text</string>
+    <string name="todo_item_image">A picture of a tourist spot</string>
+
+    <string name="no_data_yet">No data available yet</string>
+    <string name="error_load_data">Oops… something went wrong!</string>
+
+    <string name="todo_image_no_data">Image indicating no data available</string>
+    <string name="todo_image_error_load_data">The image shows failed to load data</string>
+    <string name="refresh">Refresh</string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tourism App</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="menu_search">Find</string>
+    <string name="searchbar_hint">Enter the tourism name…</string>
+    <string name="back">Back</string>
+    <string name="reset">Reset</string>
+</resources>
