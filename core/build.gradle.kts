@@ -15,7 +15,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
-        buildConfigField("String", "BASE_URL_API", "\"https://tourism-api.dicoding.dev/\"")
+        buildConfigField("String", "BASE_URL_API", "\"${properties["BASE_URL_API"]}\"")
+        buildConfigField("String", "BASE_URL_HOST", "\"${properties["BASE_URL_HOST"]}\"")
+        buildConfigField("String", "CERT_SHA_256_1", "\"${properties["CERT_SHA_256_1"]}\"")
+        buildConfigField("String", "CERT_SHA_256_2", "\"${properties["CERT_SHA_256_2"]}\"")
+        buildConfigField("String", "CERT_SHA_256_3", "\"${properties["CERT_SHA_256_3"]}\"")
     }
 
     buildTypes {
