@@ -46,6 +46,7 @@ android {
 dependencies {
     implementation(project(":core"))
 
+
     implementation(libs.glide)
 
     implementation(libs.androidx.core.ktx)
@@ -56,4 +57,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
 }

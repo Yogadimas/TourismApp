@@ -32,6 +32,11 @@ leakcanaryAndroid = "2.14"
 androidDatabaseSqlcipher = "4.5.4"
 sqliteKtx = "2.4.0"
 
+mockitoCore = "5.15.2"
+mockitoInline = "5.2.0"
+coreTesting = "2.2.0"
+kotlinxCoroutinesTest = "1.10.1"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -63,6 +68,11 @@ leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", ve
 
 android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
 androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqliteKtx" }
+
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -21,15 +21,6 @@ data class TourismEntity(
     @ColumnInfo(name = "address")
     val address: String,
 
-    @ColumnInfo(name = "latitude")
-    val latitude: Double,
-
-    @ColumnInfo(name = "longitude")
-    val longitude: Double,
-
-    @ColumnInfo(name = "like")
-    val like: Int,
-
     @ColumnInfo(name = "image")
     val image: String,
 

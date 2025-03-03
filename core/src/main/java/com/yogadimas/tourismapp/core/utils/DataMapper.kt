@@ -15,9 +15,6 @@ object DataMapper {
                 description = it.description,
                 name = it.name,
                 address = it.address,
-                latitude = it.latitude,
-                longitude = it.longitude,
-                like = it.like,
                 image = it.image,
                 isFavorite = false
             )
@@ -33,9 +30,6 @@ object DataMapper {
                 description = it.description,
                 name = it.name,
                 address = it.address,
-                latitude = it.latitude,
-                longitude = it.longitude,
-                like = it.like,
                 image = it.image,
                 isFavorite = it.isFavorite
             )
@@ -46,9 +40,6 @@ object DataMapper {
         description = input.description,
         name = input.name,
         address = input.address,
-        latitude = input.latitude,
-        longitude = input.longitude,
-        like = input.like,
         image = input.image,
         isFavorite = input.isFavorite
     )
@@ -60,9 +51,6 @@ object DataMapper {
                 description = it.description,
                 name = it.name,
                 address = it.address,
-                latitude = it.latitude,
-                longitude = it.longitude,
-                like = it.like,
                 image = it.image,
                 isFavorite = it.isFavorite
             )
@@ -73,9 +61,6 @@ object DataMapper {
         description = input.description,
         name = input.name,
         address = input.address,
-        latitude = input.latitude,
-        longitude = input.longitude,
-        like = input.like,
         image = input.image,
         isFavorite = input.isFavorite
     )
