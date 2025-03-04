@@ -80,7 +80,21 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "mergeLibDexDebug",
         "mergeProjectDexDebug",
         "mergeDexRelease",
-        "checkDebugDuplicateClasses"
+        "checkDebugDuplicateClasses",
+        "mergeReleaseGlobalSynthetics",
+        "mergeDebugJniLibFolders",
+        "mergeReleaseJniLibFolders",
+        "packageDebug",
+        "generateDebugLintModel",
+        "generateReleaseLintModel",
+        "lintAnalyzeDebug",
+        "lintVitalAnalyzeRelease",
+        "mergeReleaseNativeLibs",
+        "extractReleaseNativeSymbolTables",
+        "optimizeReleaseResources",
+        "stripReleaseDebugSymbols",
+        "generateDebugUnitTestLintModel",
+        "lintAnalyzeDebugUnitTest"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
