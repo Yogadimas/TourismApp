@@ -102,7 +102,8 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "stripReleaseDebugSymbols",
         "generateDebugUnitTestLintModel",
         "lintAnalyzeDebugUnitTest",
-        "compileReleaseArtProfile"
+        "compileReleaseArtProfile",
+        "packageRelease"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
