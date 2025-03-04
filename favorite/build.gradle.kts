@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.dynamic.feature)
     alias(libs.plugins.kotlin.android)
-    id("jacoco")
 }
 android {
     namespace = "com.yogadimas.tourismapp.favorite"
@@ -16,10 +15,6 @@ android {
         release {
             isMinifyEnabled = false
         }
-        debug {
-            enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -31,7 +26,6 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    testCoverage { jacocoVersion = "0.8.12" }
 }
 
 dependencies {
@@ -50,32 +44,4 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
-}
-
-tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
-
-    executionData.setFrom(fileTree(layout.buildDirectory) {
-        include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
-    })
-
-    classDirectories.setFrom(
-        fileTree(layout.buildDirectory) {
-            include("**/classes/**/main/**",
-                "**/intermediates/classes/debug/**",
-                "**/tmp/kotlin-classes/debug/**")
-            exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
-        }
-    )
-
-    sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
-
-    reports {
-        xml.required.set(true)
-        html.required.set(true)
-    }
-}
-
-tasks.withType<Test> {
-    finalizedBy(tasks.named("jacocoTestReport"))
 }

@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     id("kotlin-parcelize")
-    id("jacoco")
 }
 
 android {
@@ -31,10 +30,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-        debug {
-            enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -47,7 +42,6 @@ android {
         viewBinding = true
         buildConfig = true
     }
-    testCoverage { jacocoVersion = "0.8.12" }
 }
 
 dependencies {
@@ -80,34 +74,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-}
-
-tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
-    dependsOn("processDebugManifest")
-    dependsOn("compileDebugLibraryResources")
-
-    executionData.setFrom(fileTree(layout.buildDirectory) {
-        include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
-    })
-
-    classDirectories.setFrom(
-        fileTree(layout.buildDirectory) {
-            include("**/classes/**/main/**",
-                "**/intermediates/classes/debug/**",
-                "**/tmp/kotlin-classes/debug/**")
-            exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
-        }
-    )
-
-    sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
-
-    reports {
-        xml.required.set(true)
-        html.required.set(true)
-    }
-}
-
-tasks.withType<Test> {
-    finalizedBy(tasks.named("jacocoTestReport"))
 }

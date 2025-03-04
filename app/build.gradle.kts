@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("jacoco")
 }
 
 android {
@@ -27,13 +26,8 @@ android {
             )
         }
         debug {
-            enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
             isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -47,7 +41,6 @@ android {
         viewBinding = true
     }
     dynamicFeatures += setOf(":favorite")
-    testCoverage { jacocoVersion = "0.8.12" }
 }
 
 dependencies {
@@ -69,32 +62,4 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
-}
-
-tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
-
-    executionData.setFrom(fileTree(layout.buildDirectory) {
-        include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
-    })
-
-    classDirectories.setFrom(
-        fileTree(layout.buildDirectory) {
-            include("**/classes/**/main/**",
-                "**/intermediates/classes/debug/**",
-                "**/tmp/kotlin-classes/debug/**")
-            exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
-        }
-    )
-
-    sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
-
-    reports {
-        xml.required.set(true)
-        html.required.set(true)
-    }
-}
-
-tasks.withType<Test> {
-    finalizedBy(tasks.named("jacocoTestReport"))
 }
