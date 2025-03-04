@@ -35,7 +35,7 @@ jobs:
           command: ./gradlew lint test
       - run:
           name: Run Code Coverage
-          command: ./gradlew jacocoFullReport
+          command: ./gradlew clean testDebugUnitTest jacocoFullReport
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
