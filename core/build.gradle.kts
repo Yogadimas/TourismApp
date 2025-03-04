@@ -105,7 +105,17 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "copyDebugJniLibsProjectAndLocalJars",
         "exportDebugConsumerProguardFiles",
         "exportReleaseConsumerProguardFiles",
-        "copyDebugJniLibsProjectOnly"
+        "copyDebugJniLibsProjectOnly",
+        "generateDebugAndroidTestResValues",
+        "syncReleaseLibJars",
+        "lintAnalyzeDebugAndroidTest",
+        "mergeReleaseResources",
+        "extractProguardFiles",
+        "mergeReleaseJniLibFolders",
+        "copyReleaseJniLibsProjectAndLocalJars",
+        "generateDebugLintModel",
+        "lintAnalyzeDebug",
+        "lintVitalAnalyzeRelease",
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
