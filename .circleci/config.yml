@@ -35,7 +35,7 @@ jobs:
           command: ./gradlew lint test
       - run:
           name: Run Code Coverage
-          command: ./gradlew clean testDebugUnitTest jacocoTestReport --stacktrace --info
+          command: ./gradlew clean testDebugUnitTest jacocoFullReport --stacktrace --info
       - run:
           name: Stop Gradle Daemon
           command: ./gradlew --stop

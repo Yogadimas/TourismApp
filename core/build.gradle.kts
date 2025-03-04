@@ -103,7 +103,9 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "packageReleaseAssets",
         "processReleaseJavaRes",
         "copyDebugJniLibsProjectAndLocalJars",
-        "exportDebugConsumerProguardFiles"
+        "exportDebugConsumerProguardFiles",
+        "exportReleaseConsumerProguardFiles",
+        "copyDebugJniLibsProjectOnly"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {

@@ -84,7 +84,12 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "compressDebugAssets",
         "compressReleaseAssets",
         "extractProguardFiles",
-        "checkDebugDuplicateClasses"
+        "checkDebugDuplicateClasses",
+        "minifyReleaseWithR8",
+        "checkReleaseDuplicateClasses",
+        "mergeDebugJniLibFolders",
+        "mergeReleaseJniLibFolders",
+        "packageDebug"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {

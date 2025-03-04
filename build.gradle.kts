@@ -14,14 +14,17 @@ jacoco {
 
 tasks.register<JacocoReport>("jacocoFullReport") {
     dependsOn(
-        subprojects.mapNotNull { it.tasks.findByName("testDebugUnitTest") } +
-                subprojects.mapNotNull { it.tasks.findByName("jacocoTestReport") }
+        subprojects.flatMap { subproject ->
+            subproject.tasks.matching {
+                it.name == "testDebugUnitTest" || it.name == "jacocoTestReport"
+            }.toList()
+        }
     )
 
     executionData.setFrom(
         fileTree(rootProject.rootDir) {
             include("**/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
-        }
+        }.filter { it.exists() }
     )
 
     val coverageSourceDirs = subprojects.flatMap { subproject ->
@@ -29,7 +32,7 @@ tasks.register<JacocoReport>("jacocoFullReport") {
             "${subproject.projectDir}/src/main/java",
             "${subproject.projectDir}/src/main/kotlin"
         )
-    }
+    }.filter { File(it).exists() }
 
     val classFiles = subprojects.map { subproject ->
         fileTree(subproject.layout.buildDirectory.get().asFile).apply {
@@ -40,7 +43,7 @@ tasks.register<JacocoReport>("jacocoFullReport") {
             )
             exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
         }
-    }
+    }.filter { it.files.isNotEmpty() }
 
     sourceDirectories.setFrom(files(coverageSourceDirs))
     classDirectories.setFrom(files(classFiles))
@@ -56,6 +59,10 @@ tasks.register<JacocoReport>("jacocoFullReport") {
             println("✅ Merged JaCoCo report generated at: ${rootProject.layout.buildDirectory.get().asFile}/jacoco/html/index.html")
         }
     }
+}
+
+tasks.withType<Test> {
+    finalizedBy(tasks.named("jacocoFullReport"))
 }
 
 

@@ -58,7 +58,14 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "generateReleaseResValues",
         "copyReleaseMergedManifest",
         "featureReleaseWriter",
-        "mergeDebugJavaResource"
+        "mergeDebugJavaResource",
+        "compileReleaseJavaWithJavac",
+        "dataBindingGenBaseClassesRelease",
+        "mergeReleaseResources",
+        "checkReleaseAarMetadata",
+        "dataBindingMergeDependencyArtifactsRelease",
+        "mergeReleaseJavaResource",
+        "processReleaseJavaRes"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
