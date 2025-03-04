@@ -8,6 +8,15 @@ android {
     namespace = "com.yogadimas.tourismapp"
     compileSdk = 35
 
+    signingConfigs {
+        create("android") {
+            storeFile = file("${rootDir}/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.yogadimas.tourismapp"
         minSdk = 24
@@ -34,6 +43,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("android")
         }
     }
     compileOptions {
