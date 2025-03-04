@@ -108,11 +108,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 tasks.withType<Test> {
     finalizedBy(tasks.named("jacocoTestReport") {
         mustRunAfter(
-            "mergeDebugAssets",
-            "mergeReleaseAssets",
-            "generateDebugAndroidTestResValues",
-            "generateDebugAndroidTestLintModel",
-            "lintAnalyzeDebugAndroidTest"
+            "minifyReleaseWithR8",
+            "checkReleaseDuplicateClasses",
+            "mergeDebugJniLibFolders",
+            "mergeReleaseJniLibFolders",
+            "packageDebug"
         )
     })
 }
