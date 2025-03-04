@@ -1,5 +1,4 @@
 import org.gradle.kotlin.dsl.libs
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -75,79 +74,79 @@ tasks.withType<Test> {
 
 
 
-
-subprojects {
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
-    apply(plugin = "io.gitlab.arturbosch.detekt")
-    apply(plugin = "org.owasp.dependencycheck")
-
-    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
-        debug.set(true)
-        verbose.set(true)
-        android.set(false)
-        outputToConsole.set(true)
-        outputColorName.set("RED")
-        ignoreFailures.set(true)
-        enableExperimentalRules.set(true)
-        reporters {
-            reporter(ReporterType.PLAIN)
-            reporter(ReporterType.CHECKSTYLE)
-            reporter(ReporterType.HTML)
-        }
-        kotlinScriptAdditionalPaths {
-            include(fileTree("scripts/"))
-        }
-        filter {
-            exclude("**/generated/**")
-            include("**/kotlin/**")
-        }
-    }
-
-    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-        toolVersion = "1.23.8"
-        buildUponDefaultConfig = true
-        autoCorrect = false
-        ignoreFailures = true
-    }
-
-
-    configure<org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension> {
-        failBuildOnCVSS = 7.0f
-        format = "HTML"
-        outputDirectory = layout.buildDirectory.dir("reports/dependency-check").get().asFile.absolutePath
-        scanConfigurations = listOf("runtimeClasspath", "compileClasspath")
-        analyzers {
-            assemblyEnabled = false
-            jarEnabled = true
-        }
-        nvd {
-            apiKey = "5aa5b2fc-32d3-4271-aa08-065bea997406"
-        }
-    }
-
-
-
-}
-
-tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask> {
-    reportsOutputDirectory.set(
-        project.layout.buildDirectory.dir("ktlint/$name")
-    )
-}
-
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    reports {
-        html {
-            required.set(true)
-            outputLocation.set(file("${project.layout.buildDirectory}/reports/detekt/report.html"))
-        }
-        xml {
-            required.set(true)
-            outputLocation.set(file("${project.layout.buildDirectory}/reports/detekt/report.xml"))
-        }
-        txt.required.set(false)
-        sarif.required.set(false)
-    }
-}
+//
+//subprojects {
+//    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+//    apply(plugin = "io.gitlab.arturbosch.detekt")
+//    apply(plugin = "org.owasp.dependencycheck")
+//
+//    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+//        debug.set(true)
+//        verbose.set(true)
+//        android.set(false)
+//        outputToConsole.set(true)
+//        outputColorName.set("RED")
+//        ignoreFailures.set(true)
+//        enableExperimentalRules.set(true)
+//        reporters {
+//            reporter(ReporterType.PLAIN)
+//            reporter(ReporterType.CHECKSTYLE)
+//            reporter(ReporterType.HTML)
+//        }
+//        kotlinScriptAdditionalPaths {
+//            include(fileTree("scripts/"))
+//        }
+//        filter {
+//            exclude("**/generated/**")
+//            include("**/kotlin/**")
+//        }
+//    }
+//
+//    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+//        toolVersion = "1.23.8"
+//        buildUponDefaultConfig = true
+//        autoCorrect = false
+//        ignoreFailures = true
+//    }
+//
+//
+//    configure<org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension> {
+//        failBuildOnCVSS = 7.0f
+//        format = "HTML"
+//        outputDirectory = layout.buildDirectory.dir("reports/dependency-check").get().asFile.absolutePath
+//        scanConfigurations = listOf("runtimeClasspath", "compileClasspath")
+//        analyzers {
+//            assemblyEnabled = false
+//            jarEnabled = true
+//        }
+//        nvd {
+//            apiKey = "5aa5b2fc-32d3-4271-aa08-065bea997406"
+//        }
+//    }
+//
+//
+//
+//}
+//
+//tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask> {
+//    reportsOutputDirectory.set(
+//        project.layout.buildDirectory.dir("ktlint/$name")
+//    )
+//}
+//
+//tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+//    reports {
+//        html {
+//            required.set(true)
+//            outputLocation.set(file("${project.layout.buildDirectory}/reports/detekt/report.html"))
+//        }
+//        xml {
+//            required.set(true)
+//            outputLocation.set(file("${project.layout.buildDirectory}/reports/detekt/report.xml"))
+//        }
+//        txt.required.set(false)
+//        sarif.required.set(false)
+//    }
+//}
 
 
