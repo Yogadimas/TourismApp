@@ -95,7 +95,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "stripReleaseDebugSymbols",
         "generateDebugUnitTestLintModel",
         "lintAnalyzeDebugUnitTest",
-        "generateReleaseLintVitalModel"
+        "generateReleaseLintVitalModel",
+        "ktlintAndroidTestSourceSetCheck",
+        "ktlintKotlinScriptCheck",
+        "ktlintMainSourceSetCheck",
+        "ktlintTestSourceSetCheck"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
