@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.libs
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -71,6 +72,9 @@ tasks.withType<Test> {
 }
 
 
+
+
+
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     apply(plugin = "io.gitlab.arturbosch.detekt")
@@ -104,6 +108,22 @@ subprojects {
         autoCorrect = false
         ignoreFailures = true
     }
+
+
+    configure<org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension> {
+        failBuildOnCVSS = 7.0f
+        format = "HTML"
+        outputDirectory = layout.buildDirectory.dir("reports/dependency-check").get().asFile.absolutePath
+        scanConfigurations = listOf("runtimeClasspath", "compileClasspath")
+        analyzers {
+            assemblyEnabled = false
+            jarEnabled = true
+        }
+        nvd {
+            apiKey = "5aa5b2fc-32d3-4271-aa08-065bea997406"
+        }
+    }
+
 
 
 }

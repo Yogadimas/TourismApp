@@ -25,6 +25,15 @@ jobs:
             - ~/.android/build-cache
             - ~/.android/cache
       - run:
+          name: Ktlint Check
+          command: ./gradlew ktlintCheck
+      - run:
+          name: Detekt Analysis
+          command: ./gradlew detekt
+      - run:
+          name: Dependency Vulnerability Check
+          command: ./gradlew dependencyCheckAnalyze
+      - run:
           name: Run Build
           command: ./gradlew build
       - store_artifacts:
@@ -39,12 +48,6 @@ jobs:
       - run:
           name: Stop Gradle Daemon
           command: ./gradlew --stop
-      - run:
-          name: Ktlint Check
-          command: ./gradlew ktlintCheck
-      - run:
-          name: Detekt Analysis
-          command: ./gradlew detekt
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
