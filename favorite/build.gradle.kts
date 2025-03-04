@@ -75,7 +75,12 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "compressReleaseAssets",
         "extractProguardFiles",
         "dexBuilderDebug",
-        "dexBuilderRelease"
+        "dexBuilderRelease",
+        "mergeExtDexDebug",
+        "mergeLibDexDebug",
+        "mergeProjectDexDebug",
+        "mergeDexRelease",
+        "checkDebugDuplicateClasses"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
