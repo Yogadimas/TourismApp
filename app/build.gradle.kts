@@ -74,6 +74,14 @@ dependencies {
 tasks.register<JacocoReport>("jacocoTestReport") {
     dependsOn("testDebugUnitTest")
 
+    mustRunAfter(
+        "minifyDebugWithR8",
+        "compressDebugAssets",
+        "compressReleaseAssets",
+        "extractProguardFiles",
+        "checkDebugDuplicateClasses"
+    )
+
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
     })
