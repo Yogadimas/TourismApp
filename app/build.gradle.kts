@@ -95,6 +95,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "lintAnalyzeDebug",
         "generateDebugLintReportModel",
         "lintVitalAnalyzeRelease",
+        "generateReleaseLintVitalReportModel",
+        "mergeReleaseNativeLibs",
+        "extractReleaseNativeSymbolTables",
+        "optimizeReleaseResources",
+        "stripReleaseDebugSymbols"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {

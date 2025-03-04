@@ -116,6 +116,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "generateDebugLintModel",
         "lintAnalyzeDebug",
         "lintVitalAnalyzeRelease",
+        "generateDebugAndroidTestLintModel",
+        "copyReleaseJniLibsProjectOnly",
+        "generateReleaseLintModel",
+        "generateDebugLintReportModel",
+        "generateReleaseLintVitalModel",
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
