@@ -32,10 +32,10 @@ jobs:
           destination: reports
       - run:
           name: Run Tests
-          command: ./gradlew lint test
+          command: ./gradlew lint testDebugUnitTest testReleaseUnitTest
       - run:
           name: Run Code Coverage
-          command: ./gradlew clean testDebugUnitTest jacocoFullReport
+          command: ./gradlew clean testDebugUnitTest jacocoTestReport
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
