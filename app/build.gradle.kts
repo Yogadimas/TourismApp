@@ -79,7 +79,12 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "mergeReleaseAssets",
         "generateDebugAndroidTestResValues",
         "generateDebugAndroidTestLintModel",
-        "lintAnalyzeDebugAndroidTest"
+        "lintAnalyzeDebugAndroidTest",
+        "minifyDebugWithR8",
+        "compressDebugAssets",
+        "compressReleaseAssets",
+        "extractProguardFiles",
+        "checkDebugDuplicateClasses"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {

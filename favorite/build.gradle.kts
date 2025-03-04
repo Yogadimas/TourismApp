@@ -53,10 +53,13 @@ dependencies {
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
-    dependsOn("generateReleaseResValues")
-    dependsOn("copyReleaseMergedManifest")
-    dependsOn("featureReleaseWriter")
+    dependsOn(
+        "testDebugUnitTest",
+        "generateReleaseResValues",
+        "copyReleaseMergedManifest",
+        "featureReleaseWriter",
+        "mergeDebugJavaResource"
+    )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
@@ -64,9 +67,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 
     classDirectories.setFrom(
         fileTree(layout.buildDirectory) {
-            include("**/classes/**/main/**",
+            include(
+                "**/classes/**/main/**",
                 "**/intermediates/classes/debug/**",
-                "**/tmp/kotlin-classes/debug/**")
+                "**/tmp/kotlin-classes/debug/**"
+            )
             exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
         }
     )

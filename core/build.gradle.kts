@@ -83,25 +83,28 @@ dependencies {
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
-    dependsOn("processDebugManifest")
-    dependsOn("compileDebugLibraryResources")
-    dependsOn("compileReleaseJavaWithJavac")
-    dependsOn("dataBindingGenBaseClassesRelease")
-    dependsOn("kspReleaseKotlin")
-    dependsOn("packageReleaseResources")
-    dependsOn("generateReleaseResValues")
-    dependsOn("processReleaseManifest")
-    dependsOn("syncDebugLibJars")
-    dependsOn("compileReleaseLibraryResources")
-    dependsOn("mergeDebugJavaResource")
-    dependsOn("mergeDebugJniLibFolders")
-    dependsOn("mergeDebugShaders")
-    dependsOn("mergeReleaseShaders")
-    dependsOn("packageDebugAssets")
-    dependsOn("packageReleaseAssets")
-    dependsOn("processReleaseJavaRes")
-    dependsOn("copyDebugJniLibsProjectAndLocalJars")
+    dependsOn(
+        "testDebugUnitTest",
+        "processDebugManifest",
+        "compileDebugLibraryResources",
+        "compileReleaseJavaWithJavac",
+        "dataBindingGenBaseClassesRelease",
+        "kspReleaseKotlin",
+        "packageReleaseResources",
+        "generateReleaseResValues",
+        "processReleaseManifest",
+        "syncDebugLibJars",
+        "compileReleaseLibraryResources",
+        "mergeDebugJavaResource",
+        "mergeDebugJniLibFolders",
+        "mergeDebugShaders",
+        "mergeReleaseShaders",
+        "packageDebugAssets",
+        "packageReleaseAssets",
+        "processReleaseJavaRes",
+        "copyDebugJniLibsProjectAndLocalJars",
+        "exportDebugConsumerProguardFiles"
+    )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
