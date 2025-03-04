@@ -1,3 +1,5 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -6,6 +8,9 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.android.dynamic.feature) apply false
     id("jacoco")
+    alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.owaspDependencyCheck) apply false
 }
 
 jacoco {
@@ -63,6 +68,65 @@ tasks.register<JacocoReport>("jacocoFullReport") {
 
 tasks.withType<Test> {
     finalizedBy(tasks.named("jacocoFullReport"))
+}
+
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    apply(plugin = "io.gitlab.arturbosch.detekt")
+    apply(plugin = "org.owasp.dependencycheck")
+
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+        verbose.set(true)
+        android.set(false)
+        outputToConsole.set(true)
+        outputColorName.set("RED")
+        ignoreFailures.set(true)
+        enableExperimentalRules.set(true)
+        reporters {
+            reporter(ReporterType.PLAIN)
+            reporter(ReporterType.CHECKSTYLE)
+            reporter(ReporterType.HTML)
+        }
+        kotlinScriptAdditionalPaths {
+            include(fileTree("scripts/"))
+        }
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
+    }
+
+    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+        toolVersion = "1.23.8"
+        buildUponDefaultConfig = true
+        autoCorrect = false
+        ignoreFailures = true
+    }
+
+
+}
+
+tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask> {
+    reportsOutputDirectory.set(
+        project.layout.buildDirectory.dir("ktlint/$name")
+    )
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html {
+            required.set(true)
+            outputLocation.set(file("${project.layout.buildDirectory}/reports/detekt/report.html"))
+        }
+        xml {
+            required.set(true)
+            outputLocation.set(file("${project.layout.buildDirectory}/reports/detekt/report.xml"))
+        }
+        txt.required.set(false)
+        sarif.required.set(false)
+    }
 }
 
 
