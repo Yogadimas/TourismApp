@@ -74,14 +74,6 @@ dependencies {
 tasks.register<JacocoReport>("jacocoTestReport") {
     dependsOn("testDebugUnitTest")
 
-    mustRunAfter(
-        "minifyDebugWithR8",
-        "compressDebugAssets",
-        "compressReleaseAssets",
-        "extractProguardFiles",
-        "checkDebugDuplicateClasses"
-    )
-
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
     })
@@ -106,13 +98,5 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 }
 
 tasks.withType<Test> {
-    finalizedBy(tasks.named("jacocoTestReport") {
-        mustRunAfter(
-            "minifyReleaseWithR8",
-            "checkReleaseDuplicateClasses",
-            "mergeDebugJniLibFolders",
-            "mergeReleaseJniLibFolders",
-            "packageDebug"
-        )
-    })
+    finalizedBy(tasks.named("jacocoTestReport"))
 }

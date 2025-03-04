@@ -84,17 +84,8 @@ dependencies {
 
 tasks.register<JacocoReport>("jacocoTestReport") {
     dependsOn("testDebugUnitTest")
-
-    mustRunAfter(
-        "processDebugManifest",
-        "compileDebugLibraryResources",
-        "processDebugManifest",
-        "exportDebugConsumerProguardFiles",
-        "mergeDebugJniLibFolders",
-        "mergeDebugShaders",
-        "packageDebugAssets",
-        "copyDebugJniLibsProjectOnly"
-    )
+    dependsOn("processDebugManifest")
+    dependsOn("compileDebugLibraryResources") 
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
