@@ -69,6 +69,8 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
+
+    implementation(libs.bcprov.jdk15to18)
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {

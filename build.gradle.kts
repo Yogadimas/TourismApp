@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.owaspDependencyCheck) apply false
 }
 
+
 jacoco {
     toolVersion = "0.8.12"
 }
