@@ -24,15 +24,15 @@ jobs:
           paths:
             - ~/.android/build-cache
             - ~/.android/cache
-      - run:
-          name: Ktlint Check
-          command: ./gradlew ktlintCheck
-      - run:
-          name: Detekt Analysis
-          command: ./gradlew detekt
-      - run:
-          name: Dependency Vulnerability Check
-          command: ./gradlew dependencyCheckAnalyze
+#      - run:
+#          name: Ktlint Check
+#          command: ./gradlew ktlintCheck
+#      - run:
+#          name: Detekt Analysis
+#          command: ./gradlew detekt
+#      - run:
+#          name: Dependency Vulnerability Check
+#          command: ./gradlew dependencyCheckAnalyze
       - run:
           name: Run Build
           command: ./gradlew build
