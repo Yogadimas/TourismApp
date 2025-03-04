@@ -72,7 +72,10 @@ dependencies {
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
+    dependsOn(
+        "testDebugUnitTest",
+        "createDebugCoverageReport"
+    )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
@@ -80,9 +83,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 
     classDirectories.setFrom(
         fileTree(layout.buildDirectory) {
-            include("**/classes/**/main/**",
+            include(
+                "**/classes/**/main/**",
                 "**/intermediates/classes/debug/**",
-                "**/tmp/kotlin-classes/debug/**")
+                "**/tmp/kotlin-classes/debug/**"
+            )
             exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
         }
     )
@@ -96,5 +101,13 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 }
 
 tasks.withType<Test> {
-    finalizedBy(tasks.named("jacocoTestReport"))
+    finalizedBy(tasks.named("jacocoTestReport") {
+        mustRunAfter(
+            "mergeDebugAssets",
+            "mergeReleaseAssets",
+            "generateDebugAndroidTestResValues",
+            "generateDebugAndroidTestLintModel",
+            "lintAnalyzeDebugAndroidTest"
+        )
+    })
 }
