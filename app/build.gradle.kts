@@ -72,7 +72,15 @@ dependencies {
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
+    dependsOn(
+        "testDebugUnitTest",
+        "testReleaseUnitTest",
+        "mergeDebugAssets",
+        "mergeReleaseAssets",
+        "generateDebugAndroidTestResValues",
+        "generateDebugAndroidTestLintModel",
+        "lintAnalyzeDebugAndroidTest"
+    )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
