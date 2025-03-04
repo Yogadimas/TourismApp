@@ -33,7 +33,7 @@ android {
         }
         debug {
             enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
+            enableAndroidTestCoverage = false
         }
     }
     compileOptions {
@@ -84,8 +84,17 @@ dependencies {
 
 tasks.register<JacocoReport>("jacocoTestReport") {
     dependsOn("testDebugUnitTest")
-    dependsOn("processDebugManifest")
-    dependsOn("compileDebugLibraryResources")
+
+    mustRunAfter(
+        "processDebugManifest",
+        "compileDebugLibraryResources",
+        "processDebugManifest",
+        "exportDebugConsumerProguardFiles",
+        "mergeDebugJniLibFolders",
+        "mergeDebugShaders",
+        "packageDebugAssets",
+        "copyDebugJniLibsProjectOnly"
+    )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")

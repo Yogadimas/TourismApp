@@ -28,7 +28,7 @@ android {
         }
         debug {
             enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
+            enableAndroidTestCoverage = false
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -72,10 +72,7 @@ dependencies {
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn(
-        "testDebugUnitTest",
-        "createDebugCoverageReport"
-    )
+    dependsOn("testDebugUnitTest")
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
         include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
