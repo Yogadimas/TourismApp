@@ -65,7 +65,12 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "checkReleaseAarMetadata",
         "dataBindingMergeDependencyArtifactsRelease",
         "mergeReleaseJavaResource",
-        "processReleaseJavaRes"
+        "processReleaseJavaRes",
+        "generateDebugAndroidTestResValues",
+        "generateDebugAndroidTestLintModel",
+        "lintAnalyzeDebugAndroidTest",
+        "mergeDebugAssets",
+        "mergeReleaseAssets"
     )
 
     executionData.setFrom(fileTree(layout.buildDirectory) {
