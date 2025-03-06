@@ -52,6 +52,11 @@ android {
 
 dependencies {
 
+    implementation(libs.security.crypto.datastore)
+    implementation(libs.security.crypto.datastore.preferences)
+
+    implementation(libs.androidx.biometric)
+
     implementation(libs.android.database.sqlcipher)
     implementation(libs.androidx.sqlite.ktx)
 
@@ -136,9 +141,11 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 
     classDirectories.setFrom(
         fileTree(layout.buildDirectory) {
-            include("**/classes/**/main/**",
+            include(
+                "**/classes/**/main/**",
                 "**/intermediates/classes/debug/**",
-                "**/tmp/kotlin-classes/debug/**")
+                "**/tmp/kotlin-classes/debug/**"
+            )
             exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class", "**/Manifest*.*")
         }
     )

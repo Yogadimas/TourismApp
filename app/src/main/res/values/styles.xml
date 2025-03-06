@@ -71,4 +71,166 @@
     </style>
 
 
+    <style name="CustomAuthFingerprintTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:text">@string/text_auth_fingerprint_title</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+    </style>
+
+    <style name="CustomAuthFingerprintDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">54dp</item>
+        <item name="android:text">@string/text_auth_fingerprint_description</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_regular</item>
+    </style>
+
+    <style name="CustomAuthFingerprintButton" parent="@style/Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:text">@string/text_auth_fingerprint_button</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="icon">@drawable/ic_fingerprint</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+    <style name="CustomAuthPinTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:text">@string/text_auth_pin_title</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+    </style>
+
+    <style name="CustomAuthPinButton" parent="@style/Widget.Material3.Button.IconButton.Outlined">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:text">@string/text_auth_pin_button</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="icon">@drawable/ic_pin</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+    <style name="NumberButton">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="ImageButtonPin">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:tint">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="CustomButtonAuthPinToCreate" parent="@style/Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:text">@string/text_auth_pin_to_create_button</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="icon">@drawable/ic_pin</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+
+    <style name="CustomButtonAuthPinCreate" parent="@style/Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:text">@string/text_auth_pin_create_button</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="icon">@drawable/ic_pin</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+
+    <style name="CustomButtonAuthPinConfirm" parent="@style/Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:text">@string/text_auth_pin_create_confirm_button</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="icon">@drawable/ic_pin</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+
+    <style name="CustomAuthPinCreateTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:text">@string/text_auth_pin_create_title</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+    </style>
+
+
+    <style name="CustomAuthPinConfirmTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:text">@string/text_auth_pin_create_confirm_title</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog.CreateANewPIN" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button.CreateANewPIN</item>
+    </style>
+
+    <style name="Widget.App.Button.CreateANewPIN" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/md_theme_fixed_green</item>
+    </style>
+
 </resources>

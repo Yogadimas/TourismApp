@@ -68,7 +68,8 @@ class MainViewModelTest {
         val expectedTourism = MutableLiveData<Resource<List<TourismUiModel>>>()
         expectedTourism.value = Resource.Success(emptyTourismList)
 
-        Mockito.`when`(tourismUseCase.getAllTourism()).thenReturn(flowOf(Resource.Success(emptyTourismList)))
+        Mockito.`when`(tourismUseCase.getAllTourism())
+            .thenReturn(flowOf(Resource.Success(emptyTourismList)))
 
         homeViewModel.getTourism()
 
@@ -77,7 +78,6 @@ class MainViewModelTest {
         assertTrue(actualTourism is Resource.Success)
         assertEquals(0, (actualTourism as Resource.Success).data?.size)
     }
-
 
 
 }

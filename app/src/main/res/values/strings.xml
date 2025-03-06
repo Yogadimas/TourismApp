@@ -5,4 +5,52 @@
     <string name="searchbar_hint">Enter the tourism name…</string>
     <string name="back">Back</string>
     <string name="reset">Reset</string>
+
+    <string name="text_auth_pin_button">Use Pin</string>
+    <string name="text_auth_pin_to_create_button">Create a New PIN</string>
+    <string name="text_auth_pin_create_button">Create PIN</string>
+    <string name="text_auth_pin_create_confirm_button">Confirm PIN</string>
+    <string name="text_auth_fingerprint_button">Use Fingerprint</string>
+    <string name="text_auth_fingerprint_description">Use your fingerprint to secure access to this application</string>
+    <string name="text_auth_fingerprint_title">Secure Access with \nFingerprint</string>
+    <string name="text_auth_pin_title">Enter your PIN…</string>
+    <string name="text_auth_pin_create_title">Create\nyour a new PIN…</string>
+    <string name="text_auth_pin_create_confirm_title">Confirm\nyour new PIN…</string>
+
+    <string name="button_number_0">0</string>
+    <string name="button_number_1">1</string>
+    <string name="button_number_2">2</string>
+    <string name="button_number_3">3</string>
+    <string name="button_number_4">4</string>
+    <string name="button_number_5">5</string>
+    <string name="button_number_6">6</string>
+    <string name="button_number_7">7</string>
+    <string name="button_number_8">8</string>
+    <string name="button_number_9">9</string>
+
+    <string name="pin_success_created_title">PIN successfully created!</string>
+    <string name="pin_success_created_message">Your account is now more secure.</string>
+    <string name="pin_not_exist_title">Create Your PIN!</string>
+    <string name="pin_not_exist_message">Let\'s create a PIN now to keep your account secure!</string>
+    <string name="create_pin_positive_button">Let\'s Go!</string>
+    <string name="invalid_pin_message">Invalid PIN! Please try again.</string>
+    <string name="pin_confirmation_failed">PIN confirmation failed! The entered PIN does not match.</string>
+    <string name="cancel">Cancel</string>
+
+
+    <string name="show_pin">Show PIN</string>
+    <string name="hide_pin">Hide PIN</string>
+    <string name="pin_placeholder">______</string>
+    <string name="biometric_not_available"><string name="biometric_not_available">Biometric authentication is not available. Please use your PIN instead.</string>
+</string>
+
+
+    <string name="todo_image_auth_fingerprint">An image illustrating a fingerprint</string>
+    <string name="todo_image_auth_pin_digits">Icon that represents PIN digits</string>
+    <string name="todo_button_auth_to_use_fingerprint">Use fingerprint for authentication</string>
+    <string name="todo_button_auth_to_create_pin">Create a new PIN for authentication</string>
+    <string name="todo_button_auth_to_fingerprint">Navigate to the fingerprint page</string>
+    <string name="todo_button_auth_to_pin_digits">Navigate to the PIN page</string>
+    <string name="todo_button_auth_pin_delete">Delete PIN digits</string>
+    <string name="placeholder_single_star">*</string>
 </resources>

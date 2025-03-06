@@ -6,10 +6,10 @@ import com.yogadimas.tourismapp.favorite.FavoriteViewModel
 import com.yogadimas.tourismapp.favorite.dummy.DataDummy
 import com.yogadimas.tourismapp.favorite.utils.MainDispatcherRule
 import com.yogadimas.tourismapp.favorite.utils.getOrAwaitValue
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule

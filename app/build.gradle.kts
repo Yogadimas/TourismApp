@@ -65,7 +65,6 @@ android {
 dependencies {
     implementation(project(":core"))
 
-
     implementation(libs.glide)
 
     implementation(libs.androidx.core.ktx)

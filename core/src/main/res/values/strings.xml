@@ -6,7 +6,14 @@
     <string name="no_data_yet">No data available yet</string>
     <string name="error_load_data">Oops… something went wrong!</string>
 
+    <string name="refresh">Refresh</string>
+    <string name="biometric_prompt_title">Authentication Required</string>
+    <string name="biometric_prompt_subtitle">Verify Identity</string>
+    <string name="biometric_prompt_description">Place your fingerprint on the scanner to confirm.</string>
+    <string name="cancel">Cancel</string>
+    <string name="authentication_failed_please_try_again">Authentication failed, please try again.</string>
+
+
     <string name="todo_image_no_data">Image indicating no data available</string>
     <string name="todo_image_error_load_data">The image shows failed to load data</string>
-    <string name="refresh">Refresh</string>
 </resources>

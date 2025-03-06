@@ -42,6 +42,10 @@ ktlint = "12.1.1"
 detekt = "1.23.8"
 owaspDependencyCheck = "12.1.0"
 
+biometric = "1.1.0"
+
+securityCryptoDatastore = "1.1.1-beta03"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 bcprov-jdk15to18 = { module = "org.bouncycastle:bcprov-jdk15to18", version.ref = "bcprovJdk15to18" }
@@ -80,6 +84,11 @@ mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+
+
+security-crypto-datastore = { module = "io.github.osipxd:security-crypto-datastore", version.ref = "securityCryptoDatastore" }
+security-crypto-datastore-preferences = { module = "io.github.osipxd:security-crypto-datastore-preferences", version.ref = "securityCryptoDatastore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

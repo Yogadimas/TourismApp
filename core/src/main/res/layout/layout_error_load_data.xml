@@ -10,7 +10,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/todo_image_error_load_data"
-        android:src="@drawable/ic_failed_connect"
+        android:src="@drawable/ic_error_load_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

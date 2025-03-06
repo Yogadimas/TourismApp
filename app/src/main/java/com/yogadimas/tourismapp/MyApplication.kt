@@ -1,6 +1,7 @@
 package com.yogadimas.tourismapp
 
 import android.app.Application
+import com.yogadimas.tourismapp.core.di.authModule
 import com.yogadimas.tourismapp.core.di.databaseModule
 import com.yogadimas.tourismapp.core.di.networkModule
 import com.yogadimas.tourismapp.core.di.repositoryModule
@@ -21,6 +22,7 @@ class MyApplication : Application() {
                 listOf(
                     databaseModule,
                     networkModule,
+                    authModule,
                     repositoryModule,
                     useCaseModule,
                     viewModelModule

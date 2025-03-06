@@ -1,13 +1,21 @@
 package com.yogadimas.tourismapp.core.di
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.room.Room
 import com.yogadimas.tourismapp.core.BuildConfig.*
 import com.yogadimas.tourismapp.core.data.TourismRepository
+import com.yogadimas.tourismapp.core.data.auth.AuthRepository
+import com.yogadimas.tourismapp.core.data.auth.biometric.BiometricAuthManager
+import com.yogadimas.tourismapp.core.data.auth.datastore.AuthPreferences
+import com.yogadimas.tourismapp.core.data.auth.datastore.authDataStore
 import com.yogadimas.tourismapp.core.data.source.local.LocalDataSource
 import com.yogadimas.tourismapp.core.data.source.local.room.TourismDatabase
 import com.yogadimas.tourismapp.core.data.source.remote.RemoteDataSource
 import com.yogadimas.tourismapp.core.data.source.remote.network.ApiService
 import com.yogadimas.tourismapp.core.domain.repository.ITourismRepository
+import com.yogadimas.tourismapp.core.domain.repository.auth.IAuthRepository
 import com.yogadimas.tourismapp.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
@@ -19,6 +27,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+
 
 val databaseModule = module {
     factory { get<TourismDatabase>().tourismDao() }
@@ -59,9 +68,19 @@ val networkModule = module {
     }
 }
 
+val authModule = module {
+    single { BiometricAuthManager(get()) }
+    single<DataStore<Preferences>> { get<Context>().authDataStore }
+    single { AuthPreferences(get()) }
+}
+
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
     factory { AppExecutors() }
     single<ITourismRepository> { TourismRepository(get(), get(), get()) }
+    single<IAuthRepository> { AuthRepository(get(), get(), get()) }
 }
+
+
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.AuthActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="100dp">
+
+        <TextView
+            android:id="@+id/tv_auth_fingerprint_title"
+            style="@style/CustomAuthFingerprintTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_auth_fingerprint"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="54dp"
+            android:contentDescription="@string/todo_image_auth_fingerprint"
+            android:src="@drawable/ic_fingerprint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_auth_fingerprint_title" />
+
+
+        <TextView
+            android:id="@+id/tv_auth_fingerprint_desc"
+            style="@style/CustomAuthFingerprintDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_auth_fingerprint" />
+
+
+        <Button
+            android:id="@+id/btn_auth_fingerprint"
+            style="@style/CustomAuthFingerprintButton"
+            android:contentDescription="@string/todo_button_auth_to_use_fingerprint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_auth_fingerprint_desc" />
+
+        <Button
+            android:id="@+id/btn_auth_navigate_to_pin"
+            style="@style/CustomAuthPinButton"
+            android:contentDescription="@string/todo_button_auth_to_pin_digits"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_auth_fingerprint" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
