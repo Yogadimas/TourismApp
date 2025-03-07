@@ -23,7 +23,8 @@ class BiometricAuthManager(private val context: Context) {
 
     fun authenticate(activity: FragmentActivity, executor: Executor): Flow<AuthResource> =
         callbackFlow {
-            val biometricPrompt = BiometricPrompt(activity, executor,
+            val biometricPrompt = BiometricPrompt(
+                activity, executor,
                 object : BiometricPrompt.AuthenticationCallback() {
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                         trySend(AuthResource.Success())

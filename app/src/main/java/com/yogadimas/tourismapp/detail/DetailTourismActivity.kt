@@ -19,7 +19,6 @@ import com.yogadimas.tourismapp.R
 import com.yogadimas.tourismapp.core.ui.model.TourismUiModel
 import com.yogadimas.tourismapp.databinding.ActivityDetailTourismBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.getValue
 import androidx.appcompat.R as appCompatR
 import com.yogadimas.tourismapp.core.R as coreR
 
@@ -54,16 +53,18 @@ class DetailTourismActivity : AppCompatActivity() {
         val theme = window.context.theme
         theme.resolveAttribute(appCompatR.attr.colorPrimary, typedValue, true)
         val color = typedValue.data
+        val isLight = resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK ==
+                Configuration.UI_MODE_NIGHT_NO
+        WindowInsetsControllerCompat(window, window.decorView).apply {
+            isAppearanceLightStatusBars = false
+            isAppearanceLightNavigationBars = isLight
+        }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             window.statusBarColor = color
-            val isLight = resources.configuration.uiMode and
-                    Configuration.UI_MODE_NIGHT_MASK ==
-                    Configuration.UI_MODE_NIGHT_NO
-            WindowInsetsControllerCompat(window, window.decorView).apply {
-                isAppearanceLightStatusBars = false
-                isAppearanceLightNavigationBars = isLight
-            }
         }
+
+
     }
 
 

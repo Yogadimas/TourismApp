@@ -23,7 +23,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.getValue
 import com.yogadimas.tourismapp.core.R as coreR
 
 class AuthConfirmPinActivity : AppCompatActivity() {

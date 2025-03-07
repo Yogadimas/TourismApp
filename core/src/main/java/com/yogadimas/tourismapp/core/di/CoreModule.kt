@@ -4,7 +4,11 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.room.Room
-import com.yogadimas.tourismapp.core.BuildConfig.*
+import com.yogadimas.tourismapp.core.BuildConfig.BASE_URL_API
+import com.yogadimas.tourismapp.core.BuildConfig.BASE_URL_HOST
+import com.yogadimas.tourismapp.core.BuildConfig.CERT_SHA_256_1
+import com.yogadimas.tourismapp.core.BuildConfig.CERT_SHA_256_2
+import com.yogadimas.tourismapp.core.BuildConfig.CERT_SHA_256_3
 import com.yogadimas.tourismapp.core.data.TourismRepository
 import com.yogadimas.tourismapp.core.data.auth.AuthRepository
 import com.yogadimas.tourismapp.core.data.auth.biometric.BiometricAuthManager

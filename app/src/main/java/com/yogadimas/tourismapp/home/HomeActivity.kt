@@ -2,13 +2,13 @@ package com.yogadimas.tourismapp.home
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Window
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -22,7 +22,6 @@ import com.yogadimas.tourismapp.databinding.ActivityHomeBinding
 import com.yogadimas.tourismapp.detail.DetailTourismActivity
 import com.yogadimas.tourismapp.search.SearchActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.getValue
 import androidx.appcompat.R as appcompatR
 
 class HomeActivity : AppCompatActivity() {
@@ -90,6 +89,7 @@ class HomeActivity : AppCompatActivity() {
                 is Resource.Loading -> onLoadingState()
                 is Resource.Success -> onSuccessState(tourism.data ?: emptyList())
                 is Resource.Error -> onErrorState()
+
             }
         }
     }
@@ -149,7 +149,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun navigateToFavoriteModule() {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(URI_FAVORITE)))
+        startActivity(Intent(Intent.ACTION_VIEW, URI_FAVORITE.toUri()))
     }
 
     private fun navigateToSearchActivity() {

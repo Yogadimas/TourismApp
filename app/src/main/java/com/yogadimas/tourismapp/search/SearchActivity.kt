@@ -105,7 +105,6 @@ class SearchActivity : AppCompatActivity() {
         this.adapter = adapter
     }
 
-
     private fun setupSearch() {
         binding.searchView.apply {
             setupWithSearchBar(binding.searchBar)

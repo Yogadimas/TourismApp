@@ -21,7 +21,6 @@ import com.yogadimas.tourismapp.favorite.databinding.ActivityFavoriteBinding
 import com.yogadimas.tourismapp.favorite.di.favoriteModule
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
-import kotlin.getValue
 
 class FavoriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoriteBinding

@@ -13,7 +13,6 @@ import com.yogadimas.tourismapp.core.data.auth.AuthResource
 import com.yogadimas.tourismapp.databinding.ActivityAuthBinding
 import com.yogadimas.tourismapp.home.HomeActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.getValue
 
 class AuthActivity : AppCompatActivity() {
 

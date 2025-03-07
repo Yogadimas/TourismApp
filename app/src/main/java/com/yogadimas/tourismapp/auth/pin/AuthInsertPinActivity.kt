@@ -20,7 +20,6 @@ import com.yogadimas.tourismapp.auth.AuthViewModel
 import com.yogadimas.tourismapp.databinding.ActivityAuthInsertPinBinding
 import com.yogadimas.tourismapp.home.HomeActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.getValue
 import com.yogadimas.tourismapp.core.R as coreR
 
 class AuthInsertPinActivity : AppCompatActivity() {

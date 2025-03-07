@@ -19,3 +19,11 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.yogadimas.tourismapp.core.** { *; }
+-keep class com.yogadimas.tourismapp.core.data.source.remote.response.** { *; }
+-keepclassmembers class com.yogadimas.tourismapp.core.** { *; }
+-keep class com.yogadimas.tourismapp.core.databinding.** { *; }
+
+
+
