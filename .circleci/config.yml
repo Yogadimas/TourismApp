@@ -19,6 +19,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Debug Environment Variables
+          command: |
+            if [[ -z "$API_KEY_NVD" ]]; then echo "API_KEY_NVD is EMPTY"; else echo "API_KEY_NVD is SET"; fi
+            if [[ -z "$BASE_URL_API" ]]; then echo "BASE_URL_API is EMPTY"; else echo "BASE_URL_API is SET"; fi
+            if [[ -z "$CERT_SHA_256_1" ]]; then echo "CERT_SHA_256_1 is EMPTY"; else echo "CERT_SHA_256_1 is SET"; fi
+
+      - run:
           name: Set execute permission for setup_env.sh
           command: chmod +x setup_env.sh
       - run:
