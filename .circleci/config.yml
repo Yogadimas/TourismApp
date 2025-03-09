@@ -24,6 +24,12 @@ jobs:
       - run:
           name: Setup Environment Variables
           command: ./setup_env.sh
+      - run:
+          name: Set execute permission for scripts
+          command: chmod +x scripts/*.sh
+      - run:
+          name: Create local.properties
+          command: ./scripts/create_local_properties.sh
       - restore_cache:
           key: android-orb-v1-
       - run:
