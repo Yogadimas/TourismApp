@@ -73,12 +73,10 @@ tasks.withType<Test> {
     finalizedBy(tasks.named("jacocoFullReport"))
 }
 
-private val localProperties = Properties().apply {
-    load(File(rootDir, "local.properties").inputStream())
-}
-
 private fun getEnvOrProperty(key: String): String {
-    return System.getenv(key) ?: localProperties.getProperty(key, "")
+    return System.getenv(key) ?: File(rootDir, "local.properties").takeIf { it.exists() }?.inputStream()?.use {
+        Properties().apply { load(it) }.getProperty(key)
+    }.orEmpty()
 }
 
 private val apiKeyNvd = getEnvOrProperty("API_KEY_NVD")
