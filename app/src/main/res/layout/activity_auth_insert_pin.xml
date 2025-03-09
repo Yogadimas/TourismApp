@@ -42,16 +42,6 @@
             app:layout_constraintTop_toBottomOf="@+id/layout_auth_pin_digits" />
 
 
-        <Button
-            android:id="@+id/btn_auth_pin_to_create"
-            style="@style/CustomButtonAuthPinToCreate"
-            android:contentDescription="@string/todo_button_auth_to_create_pin"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_grid_number"
-            tools:visibility="visible" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

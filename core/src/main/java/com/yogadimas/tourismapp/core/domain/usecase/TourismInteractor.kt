@@ -45,7 +45,8 @@ class TourismInteractor(private val tourismRepository: ITourismRepository) : Tou
             .distinctUntilChanged()
             .filter { it.trim().isNotEmpty() }
             .flatMapLatest {
-                tourismRepository.searchTourismByName(it).map { DataMapper.mapDomainsToUiModel(it) }
+                tourismRepository.searchTourismByName(it)
+                    .map { data -> DataMapper.mapDomainsToUiModel(data) }
             }
     }
 

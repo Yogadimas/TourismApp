@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.yogadimas.tourismapp.R
+import com.yogadimas.tourismapp.auth.pin.AuthCreatePinActivity
 import com.yogadimas.tourismapp.auth.pin.AuthInsertPinActivity
 import com.yogadimas.tourismapp.core.data.auth.AuthResource
 import com.yogadimas.tourismapp.databinding.ActivityAuthBinding
@@ -15,6 +16,7 @@ import com.yogadimas.tourismapp.home.HomeActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthActivity : AppCompatActivity() {
+
 
     private lateinit var binding: ActivityAuthBinding
     private val activityContext = this@AuthActivity
@@ -25,7 +27,7 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setupView()
         setupAction()
-        setupAuth()
+        setupFingerprint()
     }
 
 
@@ -42,12 +44,12 @@ class AuthActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.apply {
-            btnAuthFingerprint.setOnClickListener { setupAuth() }
-            btnAuthNavigateToPin.setOnClickListener { navigateToAuthPinActivity() }
+            btnAuthFingerprint.setOnClickListener { setupFingerprint() }
+            btnAuthNavigateToPin.setOnClickListener { setupPIN() }
         }
     }
 
-    private fun setupAuth() {
+    private fun setupFingerprint() {
         authViewModel.isBiometricAvailable().observe(this) { available ->
             if (!available) {
                 Toast.makeText(
@@ -55,7 +57,7 @@ class AuthActivity : AppCompatActivity() {
                     getString(R.string.biometric_not_available),
                     Toast.LENGTH_SHORT
                 ).show()
-                navigateToAuthPinActivity()
+                setupPIN()
             }
         }
         authViewModel.authenticate(activityContext).observe(activityContext) { authResource ->
@@ -68,11 +70,30 @@ class AuthActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
+
     }
 
-    private fun navigateToAuthPinActivity() {
-        val intent = Intent(activityContext, AuthInsertPinActivity::class.java)
-        startActivity(intent)
+    private fun setupPIN() {
+        getPIN { pinValue ->
+            if (pinValue != null) {
+                navigateToAuthInsertPinActivity()
+            } else {
+                navigateToAuthCreatePinActivity()
+            }
+        }
+    }
+
+    private fun getPIN(action: (pinValue: String?) -> Unit) {
+        authViewModel.getPIN().observe(activityContext) { it -> action(it) }
+    }
+
+    private fun navigateToAuthCreatePinActivity() {
+        startActivity(Intent(activityContext, AuthCreatePinActivity::class.java))
+    }
+
+    private fun navigateToAuthInsertPinActivity() {
+        startActivity(Intent(activityContext, AuthInsertPinActivity::class.java))
     }
 
     private fun navigateToHomeActivity() {

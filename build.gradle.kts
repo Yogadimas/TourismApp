@@ -1,5 +1,6 @@
-import org.gradle.kotlin.dsl.libs
+
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+import java.util.Properties
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -72,9 +73,26 @@ tasks.withType<Test> {
     finalizedBy(tasks.named("jacocoFullReport"))
 }
 
+private val localProperties = Properties().apply {
+    load(File(rootDir, "local.properties").inputStream())
+}
 
+private fun getEnvOrProperty(key: String): String {
+    return System.getenv(key) ?: localProperties.getProperty(key, "")
+}
 
+private val apiKeyNvd = getEnvOrProperty("API_KEY_NVD")
+private val baseUrlApi = getEnvOrProperty("BASE_URL_API")
+private val baseUrlHost = getEnvOrProperty("BASE_URL_HOST")
+private val certSha2561 = getEnvOrProperty("CERT_SHA_256_1")
+private val certSha2562 = getEnvOrProperty("CERT_SHA_256_2")
+private val certSha2563 = getEnvOrProperty("CERT_SHA_256_3")
 
+extensions.extraProperties["BASE_URL_API"] = baseUrlApi
+extensions.extraProperties["BASE_URL_HOST"] = baseUrlHost
+extensions.extraProperties["CERT_SHA_256_1"] = certSha2561
+extensions.extraProperties["CERT_SHA_256_2"] = certSha2562
+extensions.extraProperties["CERT_SHA_256_3"] = certSha2563
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
@@ -114,17 +132,17 @@ subprojects {
     configure<org.owasp.dependencycheck.gradle.extension.DependencyCheckExtension> {
         failBuildOnCVSS = 7.0f
         format = "HTML"
-        outputDirectory = layout.buildDirectory.dir("reports/dependency-check").get().asFile.absolutePath
+        outputDirectory =
+            layout.buildDirectory.dir("reports/dependency-check").get().asFile.absolutePath
         scanConfigurations = listOf("runtimeClasspath", "compileClasspath")
         analyzers {
             assemblyEnabled = false
             jarEnabled = true
         }
         nvd {
-            apiKey = "5aa5b2fc-32d3-4271-aa08-065bea997406"
+            apiKey = apiKeyNvd
         }
     }
-
 
 
 }

@@ -18,11 +18,14 @@ import com.google.android.material.snackbar.Snackbar
 import com.yogadimas.tourismapp.R
 import com.yogadimas.tourismapp.auth.AuthViewModel
 import com.yogadimas.tourismapp.databinding.ActivityAuthConfirmPinBinding
+import com.yogadimas.tourismapp.databinding.LayoutGridNumberBinding
+import com.yogadimas.tourismapp.home.HomeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.appcompat.R as appCompatR
 import com.yogadimas.tourismapp.core.R as coreR
 
 class AuthConfirmPinActivity : AppCompatActivity() {
@@ -91,6 +94,17 @@ class AuthConfirmPinActivity : AppCompatActivity() {
 
     private fun setupAuth() = binding.layoutGridNumber.apply {
         updatePINText(pinBuilder.setLength(0).toString(), 0, isHidden)
+        setupNumberGrid()
+        btnBackspace.setOnClickListener { if (pinBuilder.isNotEmpty()) backspacePINBuilder() }
+        btnAuthNavigateToFingerprint.apply {
+            setImageDrawable(
+                ContextCompat.getDrawable(activityContext, coreR.drawable.ic_back_pin_create)
+            )
+            setOnClickListener { finish() }
+        }
+    }
+
+    private fun LayoutGridNumberBinding.setupNumberGrid() {
         val buttons = listOf(
             btn0, btn1, btn2, btn3, btn4,
             btn5, btn6, btn7, btn8, btn9
@@ -100,16 +114,6 @@ class AuthConfirmPinActivity : AppCompatActivity() {
                 if (pinBuilder.length < pinMaxLength) appendPINBuilder(button.text.toString())
             }
         }
-        btnBackspace.setOnClickListener {
-            if (pinBuilder.isNotEmpty()) backspacePINBuilder()
-        }
-        btnAuthNavigateToFingerprint.apply {
-            setImageDrawable(
-                ContextCompat.getDrawable(activityContext, coreR.drawable.ic_back_pin_create)
-            )
-            setOnClickListener { finish() }
-        }
-
     }
 
 
@@ -126,7 +130,7 @@ class AuthConfirmPinActivity : AppCompatActivity() {
     private fun updatePINText(pin: String, digitCount: Int = 0, isHidden: Boolean = true) =
         binding.tvAuthPinConfirm.apply {
             val typedValuePrimary = TypedValue()
-            theme.resolveAttribute(androidx.appcompat.R.attr.colorPrimary, typedValuePrimary, true)
+            theme.resolveAttribute(appCompatR.attr.colorPrimary, typedValuePrimary, true)
             val colorPrimary = typedValuePrimary.data
 
             val showValue = when (digitCount) {
@@ -167,7 +171,7 @@ class AuthConfirmPinActivity : AppCompatActivity() {
                 delay(DELAY_LONG)
                 dismissAlertDialog()
                 authViewModel.savePIN(pinConfirm)
-                navigateToInsertPinActivity()
+                navigateToHomeActivity()
             }
             alertDialog = MaterialAlertDialogBuilder(
                 activityContext,
@@ -203,8 +207,9 @@ class AuthConfirmPinActivity : AppCompatActivity() {
         snackBar.show()
     }
 
-    private fun navigateToInsertPinActivity() {
-        val intent = Intent(activityContext, AuthInsertPinActivity::class.java)
+
+    private fun navigateToHomeActivity() {
+        val intent = Intent(activityContext, HomeActivity::class.java)
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }

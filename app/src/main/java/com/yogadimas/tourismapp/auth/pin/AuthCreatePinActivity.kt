@@ -3,6 +3,7 @@ package com.yogadimas.tourismapp.auth.pin
 import android.content.Intent
 import android.os.Bundle
 import android.util.TypedValue
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,7 +13,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import com.google.android.material.chip.Chip
 import com.yogadimas.tourismapp.R
+import com.yogadimas.tourismapp.auth.AuthActivity
 import com.yogadimas.tourismapp.databinding.ActivityAuthCreatePinBinding
+import com.yogadimas.tourismapp.databinding.LayoutGridNumberBinding
 import com.yogadimas.tourismapp.core.R as coreR
 
 class AuthCreatePinActivity : AppCompatActivity() {
@@ -49,6 +52,18 @@ class AuthCreatePinActivity : AppCompatActivity() {
 
     private fun setupAuth() = binding.layoutGridNumber.apply {
         updatePINText(pinBuilder.setLength(0).toString(), 0, isHidden)
+        setupNumberGrid()
+        btnBackspace.setOnClickListener { if (pinBuilder.isNotEmpty()) backspacePINBuilder() }
+        btnAuthNavigateToFingerprint.setOnClickListener { navigateToAuthActivity() }
+        onBackPressedDispatcher.addCallback(activityContext, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateToAuthActivity()
+            }
+        })
+
+    }
+
+    private fun LayoutGridNumberBinding.setupNumberGrid() {
         val buttons = listOf(
             btn0, btn1, btn2, btn3, btn4,
             btn5, btn6, btn7, btn8, btn9
@@ -58,16 +73,6 @@ class AuthCreatePinActivity : AppCompatActivity() {
                 if (pinBuilder.length < pinMaxLength) appendPINBuilder(button.text.toString())
             }
         }
-        btnBackspace.setOnClickListener {
-            if (pinBuilder.isNotEmpty()) backspacePINBuilder()
-        }
-        btnAuthNavigateToFingerprint.apply {
-            setImageDrawable(
-                ContextCompat.getDrawable(activityContext, coreR.drawable.ic_back_pin_create)
-            )
-            setOnClickListener { finish() }
-        }
-
     }
 
     private fun setupChip() = binding.chipAuthPinVisibility.apply {
@@ -139,6 +144,13 @@ class AuthCreatePinActivity : AppCompatActivity() {
     private fun navigateToConfirmPin(pin: String) {
         val intent = Intent(activityContext, AuthConfirmPinActivity::class.java).apply {
             putExtra(AuthConfirmPinActivity.EXTRA_PIN, pin)
+        }
+        startActivity(intent)
+    }
+
+    private fun navigateToAuthActivity() {
+        val intent = Intent(activityContext, AuthActivity::class.java).apply {
+            setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
         startActivity(intent)
     }

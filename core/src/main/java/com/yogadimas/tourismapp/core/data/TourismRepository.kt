@@ -23,8 +23,7 @@ class TourismRepository(
                 return localDataSource.getAllTourism().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
-            override fun shouldFetch(data: List<Tourism>?): Boolean =
-                data == null || data.isEmpty()
+            override fun shouldFetch(data: List<Tourism>?): Boolean = data.isNullOrEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<TourismResponse>>> =
                 remoteDataSource.getAllTourism()
