@@ -12,36 +12,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Save Environment Variables to File
-          command: |
-            echo "$API_KEY_NVD" > api_key_nvd.txt
-            echo "$BASE_URL_API" > base_url_api.txt
-            echo "$CERT_SHA_256_1" > cert_sha_256_1.txt
-            ls -l
-      - run:
-          name: Check File Content
-          command: cat api_key_nvd.txt
-      - run:
-          name: Set execute permission for setup_env.sh
-          command: chmod +x setup_env.sh
-      - run:
           name: Setup Environment Variables
-          command: ./setup_env.sh
-      - run:
-          name: Debug setup_env.sh output
-          command: cat setup_env.sh || echo "setup_env.sh not found"
-      - run:
-          name: Debug all environment variables
-          command: printenv
-      - run:
-          name: Set execute permission for scripts
-          command: chmod +x scripts/*.sh
+          command: |
+            chmod +x setup_env.sh
+            ./setup_env.sh
       - run:
           name: Create local.properties
-          command: ./scripts/create_local_properties.sh
-      - run:
-          name: Debug local.properties
-          command: cat local.properties || echo "local.properties not found"
+          command: |
+            chmod +x scripts/*.sh
+            ./scripts/create_local_properties.sh
       - restore_cache:
           key: android-orb-v1-
       - run:
