@@ -25,11 +25,20 @@ jobs:
           name: Setup Environment Variables
           command: ./setup_env.sh
       - run:
+          name: Debug setup_env.sh output
+          command: cat setup_env.sh || echo "setup_env.sh not found"
+      - run:
+          name: Debug all environment variables
+          command: printenv
+      - run:
           name: Set execute permission for scripts
           command: chmod +x scripts/*.sh
       - run:
           name: Create local.properties
           command: ./scripts/create_local_properties.sh
+      - run:
+          name: Debug local.properties
+          command: cat local.properties || echo "local.properties not found"
       - restore_cache:
           key: android-orb-v1-
       - run:
