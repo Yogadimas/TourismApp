@@ -9,13 +9,6 @@ jobs:
       name: android/android-machine
       resource-class: large
       tag: default
-    environment:
-      API_KEY_NVD: $API_KEY_NVD
-      BASE_URL_API: $BASE_URL_API
-      BASE_URL_HOST: $BASE_URL_HOST
-      CERT_SHA_256_1: $CERT_SHA_256_1
-      CERT_SHA_256_2: $CERT_SHA_256_2
-      CERT_SHA_256_3: $CERT_SHA_256_3
     steps:
       - checkout
       - run:
